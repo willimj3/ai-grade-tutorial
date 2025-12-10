@@ -6,6 +6,7 @@ import Introduction from "@/components/steps/Introduction";
 import UnderstandingAI from "@/components/steps/UnderstandingAI";
 import PreparationChecklist from "@/components/steps/PreparationChecklist";
 import PromptingMethods from "@/components/steps/PromptingMethods";
+import RubricBuilder from "@/components/steps/RubricBuilder";
 import EthicalConsiderations from "@/components/steps/EthicalConsiderations";
 import Implementation from "@/components/steps/Implementation";
 import BestPractices from "@/components/steps/BestPractices";
@@ -18,6 +19,7 @@ export default function Home() {
     { title: "Understanding AI Grading", component: UnderstandingAI },
     { title: "Preparation Checklist", component: PreparationChecklist },
     { title: "Prompting Methods", component: PromptingMethods },
+    { title: "Rubric Builder", component: RubricBuilder },
     { title: "Ethical Considerations", component: EthicalConsiderations },
     { title: "Implementation Guide", component: Implementation },
     { title: "Best Practices", component: BestPractices },
