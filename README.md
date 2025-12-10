@@ -8,12 +8,36 @@ This app provides a step-by-step guide for law professors to safely implement AI
 
 ## Features
 
-- **Interactive Step-by-Step Wizard**: Navigate through 7 comprehensive steps
+- **Interactive Step-by-Step Wizard**: Navigate through 8 comprehensive steps
+- **AI-Powered Rubric Builder**: Upload exam files (PDF, DOCX, TXT) or paste text and let AI generate detailed grading rubrics
+- **Export Options**: Download rubrics as formatted Word documents with scoring columns, or copy ready-to-use AI prompts
 - **Preparation Checklist**: Track your readiness with interactive checkboxes
 - **Prompting Methods**: Compare different AI grading approaches with examples
 - **Ethical Framework**: Understand limitations and address concerns
 - **Implementation Guide**: Detailed instructions for safe deployment
 - **Best Practices**: Alternative uses and success metrics
+
+## Rubric Builder
+
+The Rubric Builder is an interactive tool that helps professors create detailed grading rubrics:
+
+### How It Works
+
+1. **Upload or Paste**: Upload an exam file (PDF, Word, or text) or paste your exam question directly
+2. **AI Generation**: Claude AI analyzes your exam and generates a comprehensive rubric with:
+   - Discrete grading elements
+   - Point allocations
+   - Partial credit criteria
+3. **Review & Edit**: Customize the generated rubric - add/remove elements, adjust points, modify criteria
+4. **Export**:
+   - **Word Document**: Professionally formatted with tables, scoring columns for manual grading
+   - **Copy to Clipboard**: Complete AI grading prompt with your exam, rubric, and instructions ready to paste into ChatGPT/Claude
+
+### Supported File Types
+
+- PDF (.pdf)
+- Microsoft Word (.docx)
+- Plain Text (.txt)
 
 ## Getting Started
 
@@ -21,20 +45,32 @@ This app provides a step-by-step guide for law professors to safely implement AI
 
 - Node.js 18+
 - npm
+- Anthropic API key (for rubric generation)
 
 ### Installation
 
-1. Install dependencies:
+1. Clone the repository:
+```bash
+git clone https://github.com/willimj3/ai-grade-tutorial.git
+cd ai-grade-tutorial
+```
+
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Run the development server:
+3. Create a `.env.local` file with your Anthropic API key:
+```
+ANTHROPIC_API_KEY=your-api-key-here
+```
+
+4. Run the development server:
 ```bash
 npm run dev
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ### Building for Production
 
@@ -47,9 +83,9 @@ npm start
 
 This app is optimized for deployment on Vercel:
 
-1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
+1. Push your code to GitHub
 2. Import your repository on [Vercel](https://vercel.com)
-3. Vercel will automatically detect Next.js and configure the build settings
+3. Add the `ANTHROPIC_API_KEY` environment variable in Vercel's project settings
 4. Deploy!
 
 Alternatively, use the Vercel CLI:
@@ -85,20 +121,26 @@ All exams from top-30 U.S. law schools.
 
 ```
 ├── app/
-│   ├── globals.css          # Global styles
-│   ├── layout.tsx            # Root layout
-│   └── page.tsx              # Main page with wizard
+│   ├── api/
+│   │   ├── generate-rubric/    # AI rubric generation endpoint
+│   │   └── parse-file/         # File parsing endpoint (PDF, DOCX, TXT)
+│   ├── globals.css             # Global styles
+│   ├── layout.tsx              # Root layout with analytics
+│   └── page.tsx                # Main page with wizard
 ├── components/
-│   ├── StepWizard.tsx        # Wizard navigation component
+│   ├── StepWizard.tsx          # Wizard navigation component
 │   └── steps/
 │       ├── Introduction.tsx
 │       ├── UnderstandingAI.tsx
 │       ├── PreparationChecklist.tsx
 │       ├── PromptingMethods.tsx
+│       ├── RubricBuilder.tsx   # Interactive rubric builder
 │       ├── EthicalConsiderations.tsx
 │       ├── Implementation.tsx
 │       └── BestPractices.tsx
-└── public/                   # Static assets
+├── types/
+│   └── pdf-parse.d.ts          # Type declarations
+└── public/                     # Static assets
 ```
 
 ## Technologies Used
@@ -106,7 +148,17 @@ All exams from top-30 U.S. law schools.
 - **Framework**: Next.js 15 with App Router
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **Deployment**: Optimized for Vercel
+- **AI**: Anthropic Claude API
+- **File Parsing**: pdf-parse, mammoth
+- **Document Export**: docx, file-saver
+- **Analytics**: Vercel Analytics
+- **Deployment**: Vercel
+
+## Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `ANTHROPIC_API_KEY` | Your Anthropic API key for rubric generation | Yes |
 
 ## Contributing
 
