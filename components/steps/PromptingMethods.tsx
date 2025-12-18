@@ -6,12 +6,12 @@ export default function PromptingMethods() {
   const [selectedMethod, setSelectedMethod] = useState<'open' | 'rubric' | null>(null);
 
   return (
-    <div className="prose dark:prose-invert max-w-none">
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+    <div className="max-w-none">
+      <h2 className="font-serif mb-8">
         Prompting Methods: From Simple to Advanced
       </h2>
 
-      <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
+      <p className="text-lg mb-10">
         Choose the approach that best fits your needs and technical comfort level. Most professors will achieve excellent results with the <strong>Rubric method</strong>.
       </p>
 
@@ -19,52 +19,52 @@ export default function PromptingMethods() {
       <div className="grid md:grid-cols-2 gap-4 mb-8">
         <button
           onClick={() => setSelectedMethod('open')}
-          className={`p-6 rounded-lg border-2 transition-all ${
+          className={`p-6 rounded-xl border-2 transition-all text-left ${
             selectedMethod === 'open'
-              ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30'
-              : 'border-gray-300 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-700'
+              ? 'border-neutral-400 bg-cream dark:bg-neutral-700/30'
+              : 'border-neutral-200 dark:border-neutral-600 hover:border-neutral-300 dark:hover:border-neutral-500'
           }`}
         >
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Open Method</h3>
-          <p className="text-gray-700 dark:text-gray-300 text-sm">
+          <h3 className="text-xl font-serif text-neutral-900 dark:text-neutral-50 mb-2">Open Method</h3>
+          <p className="text-sm mb-2">
             Simple, quick implementation with decent accuracy
           </p>
-          <p className="text-green-600 dark:text-green-400 font-semibold mt-2">Correlation: 0.66-0.80</p>
+          <p className="text-neutral-600 font-semibold">Correlation: 0.66-0.80</p>
         </button>
 
         <button
           onClick={() => setSelectedMethod('rubric')}
-          className={`p-6 rounded-lg border-2 transition-all ${
+          className={`p-6 rounded-xl border-2 transition-all text-left ${
             selectedMethod === 'rubric'
-              ? 'border-green-500 bg-green-50 dark:bg-green-900/30'
-              : 'border-gray-300 dark:border-gray-600 hover:border-green-300 dark:hover:border-green-700'
+              ? 'border-tan-dark bg-tan-light dark:bg-tan-dark/20'
+              : 'border-neutral-200 dark:border-neutral-600 hover:border-tan dark:hover:border-tan'
           }`}
         >
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-            Rubric Method ⭐
+          <h3 className="text-xl font-serif text-neutral-900 dark:text-neutral-50 mb-2">
+            Rubric Method
           </h3>
-          <p className="text-gray-700 dark:text-gray-300 text-sm">
+          <p className="text-sm mb-2">
             Recommended - best balance of accuracy and ease
           </p>
-          <p className="text-green-600 dark:text-green-400 font-semibold mt-2">Correlation: 0.78-0.93</p>
+          <p className="text-tan-dark font-semibold">Correlation: 0.78-0.93</p>
         </button>
       </div>
 
       {/* Open Method Details */}
       {selectedMethod === 'open' && (
-        <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-500 p-6 rounded-lg mb-8">
-          <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">
+        <div className="bg-cream dark:bg-neutral-700/30 border border-neutral-200 dark:border-neutral-600 p-6 rounded-xl mb-8">
+          <h3 className="font-serif text-neutral-900 dark:text-neutral-50 mb-4">
             Open Method: Quick Start
           </h3>
 
-          <p className="text-gray-700 dark:text-gray-300 mb-4">
+          <p className="mb-4">
             The Open method is the simplest approach, requiring only the exam question, student answer, and score range.
           </p>
 
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg mb-4">
-            <h4 className="font-bold text-gray-900 dark:text-white mb-3">Example Prompt Template:</h4>
-            <div className="bg-gray-100 dark:bg-gray-900 p-4 rounded font-mono text-sm overflow-x-auto">
-              <pre className="text-gray-800 dark:text-gray-200">{`You are grading a law school exam answer.
+          <div className="bg-white dark:bg-neutral-800 p-6 rounded-xl border border-neutral-200 dark:border-neutral-700 mb-4">
+            <h4 className="font-serif text-neutral-900 dark:text-neutral-50 mb-3">Example Prompt Template:</h4>
+            <div className="bg-neutral-100 dark:bg-neutral-900 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+              <pre className="text-neutral-700 dark:text-neutral-300">{`You are grading a law school exam answer.
 
 EXAM QUESTION:
 [Insert your exam question here]
@@ -84,23 +84,29 @@ Score:`}</pre>
 
           <div className="space-y-3">
             <div className="flex items-start">
-              <span className="text-green-600 dark:text-green-400 mr-3">✓</span>
+              <span className="w-5 h-5 bg-tan dark:bg-tan-dark rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                <svg className="w-3 h-3 text-neutral-800 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </span>
               <div>
-                <strong className="text-gray-900 dark:text-white">Pros:</strong>
-                <p className="text-gray-700 dark:text-gray-300">Fastest to implement; no rubric needed; surprisingly good accuracy</p>
+                <strong className="text-neutral-900 dark:text-neutral-50">Pros:</strong>
+                <p>Fastest to implement; no rubric needed; surprisingly good accuracy</p>
               </div>
             </div>
             <div className="flex items-start">
-              <span className="text-red-600 dark:text-red-400 mr-3">✗</span>
+              <span className="w-5 h-5 bg-neutral-400 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                <span className="text-white text-xs font-bold">-</span>
+              </span>
               <div>
-                <strong className="text-gray-900 dark:text-white">Cons:</strong>
-                <p className="text-gray-700 dark:text-gray-300">May not align with your specific grading priorities; relies entirely on AI's legal knowledge</p>
+                <strong className="text-neutral-900 dark:text-neutral-50">Cons:</strong>
+                <p>May not align with your specific grading priorities; relies entirely on AI's legal knowledge</p>
               </div>
             </div>
           </div>
 
-          <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/30 rounded">
-            <p className="text-sm text-gray-700 dark:text-gray-300">
+          <div className="mt-4 p-4 bg-neutral-100 dark:bg-neutral-700/50 rounded-lg">
+            <p className="text-sm">
               <strong>Use case:</strong> Best for initial testing, practice exams, or when you want quick preliminary grades that you'll review later.
             </p>
           </div>
@@ -109,19 +115,19 @@ Score:`}</pre>
 
       {/* Rubric Method Details */}
       {selectedMethod === 'rubric' && (
-        <div className="bg-green-50 dark:bg-green-900/20 border-2 border-green-500 p-6 rounded-lg mb-8">
-          <h3 className="text-2xl font-bold text-green-900 dark:text-green-100 mb-4">
+        <div className="bg-tan-light dark:bg-tan-dark/20 border border-tan dark:border-tan-dark p-6 rounded-xl mb-8">
+          <h3 className="font-serif text-neutral-900 dark:text-neutral-50 mb-4">
             Rubric Method: Recommended Approach
           </h3>
 
-          <p className="text-gray-700 dark:text-gray-300 mb-4">
+          <p className="mb-4">
             The Rubric method provides your detailed grading rubric to the AI, dramatically improving accuracy while remaining straightforward to implement.
           </p>
 
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg mb-4">
-            <h4 className="font-bold text-gray-900 dark:text-white mb-3">Example Prompt Template:</h4>
-            <div className="bg-gray-100 dark:bg-gray-900 p-4 rounded font-mono text-sm overflow-x-auto">
-              <pre className="text-gray-800 dark:text-gray-200">{`You are grading a law school exam answer using the provided rubric.
+          <div className="bg-white dark:bg-neutral-800 p-6 rounded-xl border border-neutral-200 dark:border-neutral-700 mb-4">
+            <h4 className="font-serif text-neutral-900 dark:text-neutral-50 mb-3">Example Prompt Template:</h4>
+            <div className="bg-neutral-100 dark:bg-neutral-900 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+              <pre className="text-neutral-700 dark:text-neutral-300">{`You are grading a law school exam answer using the provided rubric.
 
 EXAM QUESTION:
 [Insert your exam question here]
@@ -157,29 +163,29 @@ Total Score:`}</pre>
           </div>
 
           <div className="mb-6">
-            <h4 className="font-bold text-gray-900 dark:text-white mb-3">Creating an Effective Rubric:</h4>
-            <div className="space-y-2 text-gray-700 dark:text-gray-300">
-              <p>✓ Break exam into discrete elements/issues (e.g., "Personal Jurisdiction," "Venue," "Subject Matter Jurisdiction")</p>
-              <p>✓ Assign specific point values to each element</p>
-              <p>✓ Include partial credit guidelines when appropriate</p>
-              <p>✓ Specify the legal rules or principles students should apply</p>
-              <p>✓ Note common mistakes or partial approaches</p>
+            <h4 className="font-serif text-neutral-900 dark:text-neutral-50 mb-3">Creating an Effective Rubric:</h4>
+            <div className="space-y-2">
+              <p className="flex items-start"><span className="w-1.5 h-1.5 bg-tan-dark rounded-full mr-3 mt-2.5 flex-shrink-0"></span>Break exam into discrete elements/issues (e.g., "Personal Jurisdiction," "Venue," "Subject Matter Jurisdiction")</p>
+              <p className="flex items-start"><span className="w-1.5 h-1.5 bg-tan-dark rounded-full mr-3 mt-2.5 flex-shrink-0"></span>Assign specific point values to each element</p>
+              <p className="flex items-start"><span className="w-1.5 h-1.5 bg-tan-dark rounded-full mr-3 mt-2.5 flex-shrink-0"></span>Include partial credit guidelines when appropriate</p>
+              <p className="flex items-start"><span className="w-1.5 h-1.5 bg-tan-dark rounded-full mr-3 mt-2.5 flex-shrink-0"></span>Specify the legal rules or principles students should apply</p>
+              <p className="flex items-start"><span className="w-1.5 h-1.5 bg-tan-dark rounded-full mr-3 mt-2.5 flex-shrink-0"></span>Note common mistakes or partial approaches</p>
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-4 mb-4">
-            <div className="bg-green-100 dark:bg-green-900/40 p-4 rounded">
-              <h5 className="font-bold text-green-900 dark:text-green-100 mb-2">Pros:</h5>
-              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
+            <div className="bg-white dark:bg-neutral-800 p-4 rounded-xl border border-neutral-200 dark:border-neutral-700">
+              <h5 className="font-serif text-neutral-900 dark:text-neutral-50 mb-2">Pros:</h5>
+              <ul className="text-sm space-y-1">
                 <li>• Significantly higher accuracy</li>
                 <li>• Aligns with your grading priorities</li>
                 <li>• Uses rubric you likely already have</li>
                 <li>• Consistent across all students</li>
               </ul>
             </div>
-            <div className="bg-red-100 dark:bg-red-900/40 p-4 rounded">
-              <h5 className="font-bold text-red-900 dark:text-red-100 mb-2">Cons:</h5>
-              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
+            <div className="bg-white dark:bg-neutral-800 p-4 rounded-xl border border-neutral-200 dark:border-neutral-700">
+              <h5 className="font-serif text-neutral-900 dark:text-neutral-50 mb-2">Cons:</h5>
+              <ul className="text-sm space-y-1">
                 <li>• Requires creating detailed rubric</li>
                 <li>• Longer prompts to manage</li>
                 <li>• May need rubric refinement</li>
@@ -187,9 +193,9 @@ Total Score:`}</pre>
             </div>
           </div>
 
-          <div className="p-4 bg-blue-50 dark:bg-blue-900/30 rounded">
-            <p className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Research Finding:</p>
-            <p className="text-sm text-gray-700 dark:text-gray-300">
+          <div className="p-4 bg-neutral-100 dark:bg-neutral-700/50 rounded-lg">
+            <p className="font-semibold text-neutral-900 dark:text-neutral-50 mb-2">Research Finding:</p>
+            <p className="text-sm">
               The study found that more detailed rubrics led to better AI performance. The exam with the most granular rubric (Exam 2) achieved the highest correlation of 0.93, while the exam with the least detailed rubric (Exam 3) achieved 0.78.
             </p>
           </div>
@@ -197,21 +203,21 @@ Total Score:`}</pre>
       )}
 
       {!selectedMethod && (
-        <div className="bg-gray-50 dark:bg-gray-700/30 p-8 rounded-lg text-center">
-          <p className="text-gray-600 dark:text-gray-400">
+        <div className="bg-neutral-50 dark:bg-neutral-700/30 p-8 rounded-xl text-center border border-neutral-100 dark:border-neutral-700">
+          <p className="text-neutral-500">
             Click on a method above to see detailed implementation instructions and example prompts.
           </p>
         </div>
       )}
 
-      <div className="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 mt-8">
-        <h4 className="font-bold text-purple-900 dark:text-purple-100 mb-3">
+      <div className="bg-neutral-50 dark:bg-neutral-700/30 border-l-4 border-tan p-6 mt-8 rounded-r-xl">
+        <h4 className="font-serif text-neutral-900 dark:text-neutral-50 mb-3">
           Advanced Methods (Not Recommended for Most Users)
         </h4>
-        <p className="text-gray-700 dark:text-gray-300 mb-3">
+        <p className="mb-3">
           The research also tested "Bespoke" and "Pairwise" methods, but these offer minimal improvement over the Rubric method while requiring significantly more effort:
         </p>
-        <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+        <ul className="space-y-2 text-sm">
           <li>
             <strong>Bespoke:</strong> Requires custom code for each exam to extract individual element scores. Correlation: 0.80-0.92 (minimal improvement over Rubric)
           </li>
